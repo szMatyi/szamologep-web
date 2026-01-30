@@ -1,0 +1,25 @@
+table{
+    width: 80%;
+    margin: auto;
+}
+td{
+    height: 100px;
+}
+.kistd{
+    width: 20%;
+    background-image: url("rainbow.gif");
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+#nagytd{
+    width: 80%;
+    background-image: url("rainbow.gif");
+}
+#egyenlo{
+    background-color: lightsalmon;
+}
+body{
+    background-image: url("rainbow.gif");
+}

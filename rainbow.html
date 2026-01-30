@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calc</title>
+    <link rel="stylesheet" href="rainbow.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="4" id="nagytd">Számolás indításához kezdjen el megadni számokat!</td>
+        </tr>
+        <tr>
+            <td class="kistd" role="button" id="egy">1</td>
+            <td class="kistd" role="button" id="ketto">2</td>
+            <td class="kistd" role="button" id="harom">3</td>
+            <td class="kistd" role="button" id="vissza">⌫</td>
+        </tr>
+        <tr>
+            <td class="kistd" role="button" id="negy">4</td>
+            <td class="kistd" role="button" id="ot">5</td>
+            <td class="kistd" role="button" id="hat">6</td>
+            <td class="kistd" role="button" id="osszead">+</td>
+        </tr>
+        <tr>
+            <td class="kistd" role="button" id="het">7</td>
+            <td class="kistd" role="button" id="nyolc">8</td>
+            <td class="kistd" role="button" id="kilenc">9</td>
+            <td class="kistd" role="button" id="minusz">-</td>
+        </tr>
+        <tr>
+            <td class="kistd" role="button" id="nulla">0</td>
+            <td class="kistd" role="button" id="osztas">/</td>
+            <td class="kistd" role="button" id="szorzas">*</td>
+            <td class="kistd" id="egyenlo" role="button">=</td>
+        </tr>
+    </table>
+
+    <script>
+        const num1 = document.querySelector("#egy")
+        const num2 = document.querySelector("#ketto")
+        const num3 = document.querySelector("#harom")
+        const num4 = document.querySelector("#negy")
+        const num5 = document.querySelector("#ot")
+        const num6 = document.querySelector("#hat")
+        const num7 = document.querySelector("#het")
+        const num8 = document.querySelector("#nyolc")
+        const num9 = document.querySelector("#kilenc")
+        const num0 = document.querySelector("#nulla")
+
+        const vissza = document.querySelector("#vissza")
+        const osszead = document.querySelector("#osszead")
+        const minusz = document.querySelector("#minusz")
+        const osztas = document.querySelector("#osztas")
+        const szorzas = document.querySelector("#szorzas")
+        const egyenlo = document.querySelector("#egyenlo")
+
+        const mutato = document.querySelector("#nagytd")
+
+        let valtozo = 0
+        let valtozo2 = 0
+        let muvelet = 0
+        let szamolas = false
+        /* 
+         0 - nem választott
+         1 - osszeadás
+         2 - kivonás
+         3 - szorzás
+         4 - osztás
+        */
+
+        num1.addEventListener("click", () => {
+            valtozo = valtozo*10 + 1
+            mutato.textContent = valtozo
+        })
+
+        num2.addEventListener("click", () => {
+            valtozo = valtozo*10 + 2
+            mutato.textContent = valtozo
+        })
+
+        num3.addEventListener("click", () => {
+            valtozo = valtozo*10 + 3
+            mutato.textContent = valtozo
+        })
+
+        num4.addEventListener("click", () => {
+            valtozo = valtozo*10 + 4
+            mutato.textContent = valtozo
+        })
+
+        num5.addEventListener("click", () => {
+            valtozo = valtozo*10 + 5
+            mutato.textContent = valtozo
+        })
+
+        num6.addEventListener("click", () => {
+            valtozo = valtozo*10 + 6
+            mutato.textContent = valtozo
+        })
+
+        num7.addEventListener("click", () => {
+            valtozo = valtozo*10 + 7
+            mutato.textContent = valtozo
+        })
+
+        num8.addEventListener("click", () => {
+            valtozo = valtozo*10 + 8
+            mutato.textContent = valtozo
+        })
+
+        num9.addEventListener("click", () => {
+            valtozo = valtozo*10 + 9
+            mutato.textContent = valtozo
+        })
+
+        num0.addEventListener("click", () => {
+            valtozo = valtozo*10
+            mutato.textContent = valtozo
+        })
+
+        ////////////////
+        // Műveletek //
+        //////////////
+
+        osszead.addEventListener("click", () => {
+            if (szamolas === true) {
+
+            } else {
+                muvelet = 1
+                valtozo2 = valtozo
+                valtozo = 0
+                szamolas = true
+                mutato.textContent = valtozo
+            }
+        })
+
+        minusz.addEventListener("click", () => {
+            if (szamolas === true) {
+
+            } else {
+                muvelet = 2
+                valtozo2 = valtozo
+                valtozo = 0
+                szamolas = true
+                mutato.textContent = valtozo
+            }
+        })
+
+        szorzas.addEventListener("click", () => {
+            if (szamolas === true) {
+
+            } else {
+                muvelet = 3
+                valtozo2 = valtozo
+                valtozo = 0
+                szamolas = true
+                mutato.textContent = valtozo
+            }
+        })
+
+        osztas.addEventListener("click", () => {
+            if (szamolas === true) {
+
+            } else {
+                muvelet = 4
+                valtozo2 = valtozo
+                valtozo = 0
+                szamolas = true
+                mutato.textContent = valtozo
+            }
+        })
+
+
+        //////////////////
+        // Vissza gomb //
+        ////////////////
+
+        vissza.addEventListener("click", () => {
+            valtozo = Math.floor(valtozo / 10)
+            mutato.textContent = valtozo
+        })
+
+ 
+        ///////////////
+        // Számolás //
+        /////////////
+
+        egyenlo.addEventListener("click", () => {
+            if (szamolas === true) {
+                if (muvelet === 1) {
+                    valtozo2 = valtozo + valtozo2
+                }
+                if (muvelet === 2) {
+                    valtozo2 = valtozo2 - valtozo
+                }
+                if (muvelet === 3) {
+                    valtozo2 = valtozo * valtozo2
+                }
+                if (muvelet === 4) {
+                    valtozo2 = valtozo2 / valtozo
+                }
+ 
+
+                mutato.textContent = valtozo2
+            }
+        })
+
+    </script>
+
+</body>
+</html>
